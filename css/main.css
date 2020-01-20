@@ -1,0 +1,108 @@
+html {
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  margin: 0;
+  background-color: rgb(202, 231, 250);
+}
+
+.headerNavBar {
+  width: calc(100% - 10px);
+  height: 40px;
+  position: fixed;
+  z-index: 1;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  background-color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  justify-content: space-between;
+  left: 0;
+  top: 0;
+}
+
+.headerAppName {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.dashboard {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+.dashboard > div {
+  margin: 20;
+  padding: 20;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: #FFFFFF;
+  border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.overviewTable {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid #dadada;
+}
+
+.overviewTableRow {
+  display: inline-flex;
+  border-bottom: 1px solid #dadada;
+}
+
+.overviewTableRow > div {
+  width: 100px;
+  padding: 7px;
+  /* border-left: 1px solid #dadada; */
+}
+
+.overviewTableRow .header {
+  font-weight: 600;
+  display: flex;
+  text-align: center;
+  align-items: center;
+}
+
+.number {
+  text-align: right;
+}
+
+button {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.myTime > button {
+  cursor: pointer;
+  background-color: #0098ff;
+  color: #f0f5fb;
+  margin: 10px 0;
+  font-weight: 600;
+  font-size: 14px;
+  height: 38px;
+  border-radius: 50px;
+}
+
+
+.signInButton {
+  background-color: #0098ff;
+  color: #dadada;
+  cursor: pointer;
+  height: 32px;
+  margin-bottom: 15px;
+}
+
+.signInButton:disabled {
+  background-color: #a3baca;
+  cursor: not-allowed;
+}
+
+.signUpButton {
+  cursor: pointer;
+}
