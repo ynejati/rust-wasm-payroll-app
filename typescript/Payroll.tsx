@@ -18,16 +18,7 @@ export const Payroll = (props: any) => {
     DASHBOARD,
     ACCOUNT_SETTINGS
   } = Pages;
-  const [currentPage, setCurrentPage] = React.useState<Pages>(LOGIN)
-
-  const containerStyle: React.CSSProperties = {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    minHeight: 'calc(100% - 100px)',
-    width: '100%',
-    marginTop: 70
-  };
+  const [currentPage, setCurrentPage] = React.useState<Pages>(LOGIN);
 
   const handleSignInClick = () => {
     setCurrentPage(DASHBOARD);
@@ -38,7 +29,7 @@ export const Payroll = (props: any) => {
   switch (currentPage) {
     case LOGIN:
       content = <Login onSignInClick={handleSignInClick} />;
-    // break;
+      // break;
     case DASHBOARD:
       content = <Dashboard {...mockDashboardProps} />;
       break;
@@ -49,12 +40,12 @@ export const Payroll = (props: any) => {
     <div style={{ position: 'relative' }}>
       <div className='headerNavBar'>
         <div className='headerAppName'>ABC Payroll Services</div>
-        <div style={{ display: 'inline-flex', cursor: 'pointer' }}>
+        <div className='headerAccount'>
           <div>Yousuf Nejati</div>
           <KeyboardDownArrow />
         </div>
       </div>
-      <div style={containerStyle}>
+      <div className='contentContainer'>
         {content}
       </div>
     </div>

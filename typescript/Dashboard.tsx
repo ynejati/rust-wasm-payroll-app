@@ -14,11 +14,11 @@ export const Dashboard = (props: any) => {
   const today = new Date();
 
   return (
-    <div className='dashboard'>
-      <div>
-        <div style={{ fontSize: 20, paddingBottom: 10, color: '#b22641', marginBottom: 50, alignSelf: 'center', borderBottom: '1px solid #dadada', width: '100%' }}>My Time Off</div>
-        <div style={{ fontSize: 14 }}>As of today</div>
-        <a href="" style={{ margin: '20 0' }}>REQUEST TIME OFF</a>
+    <div className='dashboardContentContainer'>
+      <div className='overviewCard'>
+        <div className='timeOff'>My Time Off</div>
+        <div className='asOfToday'>As of today</div>
+        <a href="" className='requestOff'>REQUEST TIME OFF</a>
         <div className='overviewTable'>
           <div className='overviewTableRow'>
             <div className="header">TIME OFF POLICY</div>
@@ -51,21 +51,21 @@ export const Dashboard = (props: any) => {
             <div className='number'>{`${padNumber(0)} H`}</div>
           </div>
         </div>
-        <div style={{ marginTop: 20, fontSize: 12 }}>* Balance/Request Amount: D (Days); H (Hours)</div>
-        <div style={{ fontSize: 12 }}>* The balances include future transactions.</div>
+        <div className='balanceRequestAnnotation'>* Balance/Request Amount: D (Days); H (Hours)</div>
+        <div className='balanceIncludesAnnotation'>* The balances include future transactions.</div>
       </div>
-      <div className='myTime' style={{ display: 'flex', flexDirection: 'column' }}>
-        <div style={{ fontSize: 20, paddingBottom: 10, color: '#b22641', marginBottom: 10, alignSelf: 'center', borderBottom: '1px solid #dadada', width: '100%' }}>My Time</div>
-        <div style={{ marginBottom: 30 }}>{`${today.toDateString()} ${today.getHours()}:${today.getMinutes()}`}</div>
+      <div className='myTimeOverviewCard'>
+        <div className='title'>My Time</div>
+        <div className='today'>{`${today.toDateString()} ${today.getHours()}:${today.getMinutes()}`}</div>
         <button>CLOCK IN</button>
         <button>CLOCK OUT</button>
         <button>MY TIMECARD</button>
         <button>SUPPLEMENTAL PAY CODE</button>
       </div>
-      <div style={{ display: 'flex', flexDirection: 'column' }}>
+      <div className='quickLinks'>
         <div>Quick Links</div>
       </div>
-      <div style={{ display: 'flex', flexDirection: 'column' }}>
+      <div className='news'>
         <div>ABC Payroll News</div>
       </div>
     </div>
