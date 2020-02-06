@@ -1,7 +1,11 @@
 import * as React from 'react';
 import { KeyboardDownArrow } from './index';
 
-export const Login: React.FunctionComponent<any> = (props: any) => {
+interface LoginProps {
+  onSignInClick(username: string, password: string): void;
+}
+
+export const Login: React.FunctionComponent<any> = (props: LoginProps) => {
   const [userNameMeetsMinLength, setUserNameMeetsMinLength] = React.useState(false);
   const [passwordMeetsMinLength, setPasswordMeetsMinLength] = React.useState(false);
   const [isSignInDisabled, setSignInDisabled] = React.useState(true);
@@ -25,11 +29,17 @@ export const Login: React.FunctionComponent<any> = (props: any) => {
     } else if (passwordMeetsMinLength && valueLength < minLength) {
       setPasswordMeetsMinLength(false);
     }
-  }
+  };
 
   const onSignUpClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    props.wasm.greet('Sign Up');
-  }
+  
+  };
+
+  const onSignInClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (usernameRef.current && passwordRef.current) {
+      props.onSignInClick(usernameRef.current.value, passwordRef.current.value);
+    }
+  };
 
   const onUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const valueLength: number = e.currentTarget.value.length;
@@ -38,7 +48,7 @@ export const Login: React.FunctionComponent<any> = (props: any) => {
     } else if (userNameMeetsMinLength && valueLength < minLength) {
       setUserNameMeetsMinLength(false);
     }
-  }
+  };
 
   return (
     <div className='loginContentContainer'>
@@ -62,7 +72,7 @@ export const Login: React.FunctionComponent<any> = (props: any) => {
           <div>Password</div>
           <input className='loginInput' ref={passwordRef} onChange={onPasswordChange} type='password'></input>
         </div>
-        <button className='signInButton' disabled={isSignInDisabled} onClick={props.onSignInClick}>SIGN IN</button>
+        <button className='signInButton' disabled={isSignInDisabled} onClick={onSignInClick}>SIGN IN</button>
         <a className='forgotLink' href="">Forgot your username/password?</a>
       </div>
       <div className='needAccountContainer'>

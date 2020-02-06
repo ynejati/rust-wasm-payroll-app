@@ -1,6 +1,4 @@
 import * as React from 'react';
-// import * as wasm from '../pkg/payroll';
-
 import { Login } from './Login';
 import { Dashboard } from './Dashboard';
 
@@ -12,16 +10,20 @@ export enum Pages {
   ACCOUNT_SETTINGS
 }
 
-export const Payroll = (props: any) => {
+export const Payroll = (props: { wasm: any }) => {
   const {
     LOGIN,
     DASHBOARD,
     ACCOUNT_SETTINGS
   } = Pages;
+  const [authenticated, setAuthenticated] = React.useState<boolean>(false);
   const [currentPage, setCurrentPage] = React.useState<Pages>(LOGIN);
 
-  const handleSignInClick = () => {
-    setCurrentPage(DASHBOARD);
+  const handleSignInClick = (username: string, password: string) => {
+    if (props.wasm.authenticate(username, password)) {
+      setAuthenticated(true);
+      setCurrentPage(DASHBOARD);
+    }
   };
 
   let content;
@@ -29,9 +31,9 @@ export const Payroll = (props: any) => {
   switch (currentPage) {
     case LOGIN:
       content = <Login onSignInClick={handleSignInClick} />;
-      // break;
+      break;
     case DASHBOARD:
-      content = <Dashboard {...mockDashboardProps} />;
+      content = <Dashboard authenticated={authenticated} {...mockDashboardProps} />;
       break;
     case ACCOUNT_SETTINGS:
   }
